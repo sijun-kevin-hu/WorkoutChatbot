@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workout Chatbot</title>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-box" id="chat-box">
+            <div class="chat-message">
+                <div class="chat-message-inner">
+                    <p>Hi! I'm your workout chatbot. How can I help you today?</p>
+                </div>
+            </div>
+        </div>
+        <div class="chat-input">
+            <form id="chat-form" action="/generate-workout" method="POST">
+                <input type="text" id="goal" name="goal" placeholder="What's your goal?" required />
+                <input type="text" id="workout_type" name="workout_type" placeholder="What's are you working on today?" required />
+                <input type="text" id="duration" name="duration" placeholder="How long do you want to workout?" required />
+                <button value="submit">Send</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
