@@ -10,7 +10,7 @@ app = Flask(__name__)
 load_dotenv()
 
 @app.route('/generate-workout', methods=['GET'])
-def load_workout():
+def workout():
     return render_template('index.html')
 
 @app.route('/generate-workout', methods=['POST'])
@@ -26,12 +26,12 @@ def get_workout():
             store=True,
             messages=[
                 {"role": "developer", "content": "You are my personal fitness coach. You are to be tough but reasonable. I want the response to be well-listed, short, and consise."},
-                {"role": "user", "content": f"I want to {goal} and I want a {workout_type} workout plan for {duration}."}
+                {"role": "user", "content": f"I want to work on {goal} and I want a {workout_type} workout plan for this long: {duration}."}
             ],
             max_tokens=100
         )
-        print(response.choices[0].message)
-        return jsonify({"workout_plan": response.choices[0]["message"]["content"]}), 200
+        print(response.choices[0].message.content)
+        return jsonify({"workout_plan": response.choices[0].message.content}), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
